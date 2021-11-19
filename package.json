@@ -1,4 +1,7 @@
 {
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
   "name": "connect",
   "version": "0.1.0",
   "private": true,
