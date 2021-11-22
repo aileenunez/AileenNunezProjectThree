@@ -1,4 +1,3 @@
-import App from './App'
 function Input(){
 
     return(

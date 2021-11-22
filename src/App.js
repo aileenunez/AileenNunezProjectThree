@@ -3,11 +3,13 @@ import './App.css';
 import {useState, useEffect} from 'react'; 
 import axios from 'axios';
 import Articles from './Articles';
-
+import categories from './category'
 
 function App() {
   const [search, setSearch] = useState('')
   const [news, setNews] = useState([])
+const [userSelect, setUserSelect] = useState('')
+
 
   useEffect(function(){
     const apiKey = "12ad51148fe142779eebb49a36ad4a02"
@@ -18,24 +20,43 @@ function App() {
       params:{
         apiKey: apiKey, 
         language: 'en',
-        pageSize: 1, 
+        pageSize: 3, 
         q: search, 
+        categories: userSelect
       }, 
     }).then(function(response){
       console.log(response.data.articles)
       setNews(response.data.articles)
     })
 
-   
+    
   }, [search]); 
 
+
   return (
-    
     <div className="App">
+      <header>
+      <nav>
+      <ul>
+      {
+        categories.map(function(category){
+          return(
+              <li><button onClick={function(event){
+                event.preventDefault()
+                setUserSelect(event.target.innerHTML)
+              }}>{category}</button></li>
+          )
+        })
+      }
+      </ul>
+      </nav>
       <h1>The Connect</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptates qui dolores sit numquam quisquam architecto, magni consequuntur quo libero ut voluptate necessitatibus eveniet doloribus eaque. Voluptates modi quos in?</p>
+      <p>Daily News Website, search news by category through top navigation bar or keyword through search bar. </p>
+      </header>
       <form>
-      <label for="newsSearch">Search News:</label>
+      <ul>
+      </ul>
+      <label htmlFor="newsSearch">Search News:</label>
       <input type="text" placeholder="news category" id="newsSearch" name="newsSearch" onChange={function(event){
          setSearch(event.target.value)
       }}/>
