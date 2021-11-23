@@ -1,20 +1,18 @@
-//Article Results from API Search 
+//Individual article results rendered from catergory/keyword search 
 
-function Articles(props){
+function Articles(props) {
 
-return(
+  return (
     <>
-    <div className='story'>
-    <img src={props.img} alt={props.alt} />
-    <p>{props.date}</p>
-    <p>{props.title}</p>
-    <p>{props.content}</p>
-    <button><a href={props.url}>Article Link</a></button>
-  </div>
-  
-</>)
-
-
+      <div className='individualArticle'>
+        <img src={props.img} alt={props.alt} />
+        <p>{props.date}</p>
+        <h2>{props.title}</h2>
+        <p>{props.content}</p>
+        <button><a href={props.url}>Article Link</a></button>
+      </div>
+    </>
+  )
 }
 
 export default Articles

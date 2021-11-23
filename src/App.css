@@ -15,9 +15,9 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 /* font-family: 'Open Sans', sans-serif;
 font-family: 'Poppins', sans-serif; */
 
-.App {
+/* .App {
   margin: 0 40px;
-}
+} */
 body{
   font-family: 'Open Sans', sans-serif;
 }
@@ -83,10 +83,11 @@ nav li:last-child{
   border: 2px violet solid; 
 }
 
-.story{
+.individualArticle{
   background-color: peachpuff;
   padding: 20px 40px;
   margin-bottom: 20px;
+  width:400px; 
 }
 img{
   margin: 0 auto; 

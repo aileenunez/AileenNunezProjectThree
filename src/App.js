@@ -1,91 +1,101 @@
 import './App.css';
-// import Input from './Input';
-import {useState, useEffect} from 'react'; 
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Articles from './Articles';
 import categories from './category'
-
+import Footer from './Footer';
 function App() {
-  const [search, setSearch] = useState('')
-  const [news, setNews] = useState([])
-const [userSelect, setUserSelect] = useState('')
+//setting up initial states 
+  const [search, setSearch] = useState(''); 
+  const [news, setNews] = useState([]); 
+  const [userSelect, setUserSelect] = useState(''); 
 
-const handleUserChoice = function(e){
-  e.preventDefault()
-  setUserSelect(e.target.value)
-}
+//Event handler Functions 
+  const handleUserChoice = function (e) {
+    e.preventDefault(); 
+    setUserSelect(e.target.value); 
+  }; 
+  const handleChange = function(event){
+      setSearch(event.target.value)
+  }
+  const handleSubmit = function(event){
+    console.log(event)
+    event.preventDefault()
+    setSearch("")
+  }
 
-  useEffect(function(){
-    const apiKey = "bfad15ce5ca44d5bb1289592477dc174"
+//Use Effect to listen to changes to page and perform this action once the overall state of the page is changed in some way 
+  useEffect(function () {
+    const apiKey = "12ad51148fe142779eebb49a36ad4a02"; 
     axios({
-      url: "https://newsapi.org/v2/top-headlines", 
-      method: "GET", 
-      responseType: "json", 
-      params:{
-        apiKey: apiKey, 
-        language: 'en',
-        pageSize: 3, 
-        q: search, 
-        category: userSelect
-      }, 
-    }).then(function(response){
+      url: "https://newsapi.org/v2/top-headlines",
+      method: "GET",
+      responseType: "json",
+      params: {
+        apiKey: apiKey,
+        language: "en",
+        pageSize: 10,
+        q: search,
+        category: userSelect,
+      },
+    }).then(function(response) {
       console.log(response.data.articles)
       setNews(response.data.articles)
     })
+  //add dependency array in order to stop triggering infinite useEffect function 
+  }, [search, userSelect]);
 
-    
-  }, [search, userSelect]); 
-
-
+  //What do we want to return and render on website 
   return (
     <div className="App">
+      {/* START OF HEADER SECTION  */}
       <header>
-      <nav>
-      <ul>
+        <nav>
+          <ul>
+            {
+              categories.map(function (category) {
+                return (
+                  <li key={category}><button value={category} onClick={handleUserChoice}>{category}</button></li>
+                )
+              })
+            }
+          </ul>
+        </nav>
+        <h1>The Connect</h1>
+        <p>Daily News Website, search news by category through top navigation bar or keyword through search bar. </p>
+      </header>
+      {/* END OF HEADER SECTION  */}
+      <main>
+      {/* START OF FORM SECTION  */}
+      <form>
+        <label htmlFor="newsSearch">Search News:</label>
+        <input type="text" placeholder="Keyword" id="newsSearch" name="newsSearch" onChange={handleChange} />
+        <button type="submit" onSubmit={handleSubmit}>Get News</button>
+      </form>
+      {/* END OF FORM SECTION  */}
+      {/* START OF NEWS ARTICLES SECTION  */}
       {
-        categories.map(function(category){
-          return(
-              <li><button value={category} onClick={handleUserChoice}>{category}</button></li>
+        news.map(function(singularNews) {
+          return (
+            <section className="storyContainer" key={singularNews.title}>
+              <Articles
+                title={singularNews.title}
+                img={singularNews.urlToImage}
+                date={new Date(singularNews.publishedAt).toDateString()}
+                alt={singularNews.description}
+                url={singularNews.url}
+                content={singularNews.content}
+              />
+            </section>
           )
         })
       }
-      </ul>
-      </nav>
-      <h1>The Connect</h1>
-      <p>Daily News Website, search news by category through top navigation bar or keyword through search bar. </p>
-      </header>
-      <form>
-      <ul>
-      </ul>
-      <label htmlFor="newsSearch">Search News:</label>
-      <input type="text" placeholder="news category" id="newsSearch" name="newsSearch" onChange={function(event){
-         setSearch(event.target.value)
-      }}/>
-      <button type="submit" onSubmit={function(event){
-        event.preventDefault()
-        setSearch("")
-      }}>NEWS! </button>
-      </form>
-      {
-        news.map(function(articlez){ 
-          return(
-            <section key={articlez.title}>
-          <Articles
-          title = {articlez.title}
-          img = {articlez.urlToImage}
-          date = {new Date (articlez.publishedAt).toDateString()}
-          alt = {articlez.description}
-          url = {articlez.url}
-          content = {articlez.content}
-          />
-          </section>
-          )})
-    
-      }
-      <footer>Created at Juno College Technology</footer>
-     </div> 
+      {/* END OF NEWS ARTICLES SECTION  */}
+      </main>
+      {/* END OF MAIN AND START OF FOOTER  */}
+      <Footer />
+    </div>
   );
 }
-
 export default App;
 
