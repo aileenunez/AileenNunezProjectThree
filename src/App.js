@@ -15,13 +15,14 @@ function App() {
 
 //Event handler Functions 
   const handleUserChoice = function (e) {
+    setSearch("")
     e.preventDefault(); 
     setUserSelect(e.target.value); 
   }; 
 
 //Use Effect to listen to changes to page and perform this action once the overall state of the page is changed in some way 
   useEffect(function () {
-    const apiKey = "e8ddaaade5b14f3c94fe0b4f4b40bb10" 
+    const apiKey = "12ad51148fe142779eebb49a36ad4a02" 
     axios({
       url: "https://newsapi.org/v2/top-headlines",
       method: "GET",
@@ -34,8 +35,11 @@ function App() {
         category: userSelect,
       },
     }).then(function(response) {
+      // WILL HAVE TO DELETE THIS 
       console.log(response.data.articles)
+      response.data.articles.length ?
       setNews(response.data.articles)
+      : alert('No Curent Data on this Subject! Please Try again :)')
     })
   //add dependency array in order to stop triggering infinite useEffect function 
   }, [search, userSelect]);
@@ -50,7 +54,9 @@ function App() {
             {
               categories.map(function (category) {
                 return (
-                  <li key={category}><button value={category} onClick={handleUserChoice}>{category}</button></li>
+                  <li key={category}><button 
+                  value={category} 
+                  onClick={handleUserChoice}>{category}</button></li>
                 )
               })
             }
@@ -62,13 +68,19 @@ function App() {
       {/* END OF HEADER SECTION  */}
       <main>
       {/* START OF FORM SECTION  */}
-      <Form search={search} setSearch={setSearch}/>
+      <Form 
+      search={search} 
+      setSearch={setSearch}
+      setUserSelect={setUserSelect}
+      />
       {/* END OF FORM SECTION  */}
       {/* START OF NEWS ARTICLES SECTION  */}
       {
         news.map(function(singularNews) {
           return (
-            <section className="storyContainer" key={singularNews.title}>
+            <section 
+            className="storyContainer"
+             key={singularNews.title}>
               <Articles
                 title={singularNews.title}
                 img={singularNews.urlToImage}

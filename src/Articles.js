@@ -2,6 +2,7 @@
 
 function Articles(props) {
 
+
   return (
     <>
       <div className='individualArticle'>

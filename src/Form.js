@@ -1,21 +1,28 @@
 import { useState } from "react";
 
-function Form({setSearch}){
+//importing props from APP.js 
+function Form({setSearch, setUserSelect}){
 
   const [formQuery, setFormQuery] = useState('')
 
+  //Event Handler Functions 
     const handleChange = function(event){
       setFormQuery(event.target.value)
     }
+     //Event handler function that displays news based on the userInput 
     const handleSubmit = function(event){
       event.preventDefault()
+      setUserSelect("")
       setSearch(formQuery)
+      setFormQuery("")
     }
+    //Event handler function  that returns you to home page 
     const handleClearForm = function(){
       setFormQuery("")
       setSearch("")
     }
 
+  //Returning What will Render on Page 
 return(
   <>
     <form onSubmit={handleSubmit}>
