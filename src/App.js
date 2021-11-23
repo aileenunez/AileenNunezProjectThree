@@ -4,6 +4,9 @@ import axios from 'axios';
 import Articles from './Articles';
 import categories from './category'
 import Footer from './Footer';
+import Form from './Form'
+
+
 function App() {
 //setting up initial states 
   const [search, setSearch] = useState(''); 
@@ -15,18 +18,10 @@ function App() {
     e.preventDefault(); 
     setUserSelect(e.target.value); 
   }; 
-  const handleChange = function(event){
-      setSearch(event.target.value)
-  }
-  const handleSubmit = function(event){
-    console.log(event)
-    event.preventDefault()
-    setSearch("")
-  }
 
 //Use Effect to listen to changes to page and perform this action once the overall state of the page is changed in some way 
   useEffect(function () {
-    const apiKey = "12ad51148fe142779eebb49a36ad4a02"; 
+    const apiKey = "e8ddaaade5b14f3c94fe0b4f4b40bb10" 
     axios({
       url: "https://newsapi.org/v2/top-headlines",
       method: "GET",
@@ -34,7 +29,7 @@ function App() {
       params: {
         apiKey: apiKey,
         language: "en",
-        pageSize: 10,
+        pageSize: 5,
         q: search,
         category: userSelect,
       },
@@ -67,11 +62,7 @@ function App() {
       {/* END OF HEADER SECTION  */}
       <main>
       {/* START OF FORM SECTION  */}
-      <form>
-        <label htmlFor="newsSearch">Search News:</label>
-        <input type="text" placeholder="Keyword" id="newsSearch" name="newsSearch" onChange={handleChange} />
-        <button type="submit" onSubmit={handleSubmit}>Get News</button>
-      </form>
+      <Form search={search} setSearch={setSearch}/>
       {/* END OF FORM SECTION  */}
       {/* START OF NEWS ARTICLES SECTION  */}
       {
