@@ -10,19 +10,23 @@ function App() {
   const [news, setNews] = useState([])
 const [userSelect, setUserSelect] = useState('')
 
+const handleUserChoice = function(e){
+  e.preventDefault()
+  setUserSelect(e.target.value)
+}
 
   useEffect(function(){
-    const apiKey = "12ad51148fe142779eebb49a36ad4a02"
+    const apiKey = "bfad15ce5ca44d5bb1289592477dc174"
     axios({
       url: "https://newsapi.org/v2/top-headlines", 
       method: "GET", 
-      dataResponse: "json", 
+      responseType: "json", 
       params:{
         apiKey: apiKey, 
         language: 'en',
         pageSize: 3, 
         q: search, 
-        categories: userSelect
+        category: userSelect
       }, 
     }).then(function(response){
       console.log(response.data.articles)
@@ -30,7 +34,7 @@ const [userSelect, setUserSelect] = useState('')
     })
 
     
-  }, [search]); 
+  }, [search, userSelect]); 
 
 
   return (
@@ -41,10 +45,7 @@ const [userSelect, setUserSelect] = useState('')
       {
         categories.map(function(category){
           return(
-              <li><button onClick={function(event){
-                event.preventDefault()
-                setUserSelect(event.target.innerHTML)
-              }}>{category}</button></li>
+              <li><button value={category} onClick={handleUserChoice}>{category}</button></li>
           )
         })
       }
