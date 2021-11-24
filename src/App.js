@@ -22,23 +22,22 @@ function App() {
 
 //Use Effect to listen to changes to page and perform this action once the overall state of the page is changed in some way 
   useEffect(function () {
-    const apiKey = "12ad51148fe142779eebb49a36ad4a02" 
+    const apiKey = "SIWrEacA2Futxp7zNsPEXpiVLU9JH0408Ot04O7L"
     axios({
-      url: "https://newsapi.org/v2/top-headlines",
+      url: "https://api.thenewsapi.com/v1/news/top",
       method: "GET",
       responseType: "json",
       params: {
-        apiKey: apiKey,
+        api_token: apiKey,
         language: "en",
-        pageSize: 5,
-        q: search,
-        category: userSelect,
+        search: search,
+        categories: userSelect,
       },
     }).then(function(response) {
       // WILL HAVE TO DELETE THIS 
-      console.log(response.data.articles)
-      response.data.articles.length ?
-      setNews(response.data.articles)
+      console.log(response.data.data)
+      response.data.data.length ?
+      setNews(response.data.data)
       : alert('No Curent Data on this Subject! Please Try again :)')
     })
   //add dependency array in order to stop triggering infinite useEffect function 
@@ -80,14 +79,14 @@ function App() {
           return (
             <section 
             className="storyContainer"
-             key={singularNews.title}>
+             key={singularNews.uuid}>
               <Articles
                 title={singularNews.title}
-                img={singularNews.urlToImage}
-                date={new Date(singularNews.publishedAt).toDateString()}
-                alt={singularNews.description}
+                img={singularNews.image_url}
+                date={new Date(singularNews.published_at).toDateString()}
+                alt={singularNews.snippet}
                 url={singularNews.url}
-                content={singularNews.content}
+                content={singularNews.description}
               />
             </section>
           )
