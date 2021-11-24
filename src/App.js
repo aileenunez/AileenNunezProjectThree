@@ -74,24 +74,26 @@ function App() {
       />
       {/* END OF FORM SECTION  */}
       {/* START OF NEWS ARTICLES SECTION  */}
+      <section className="storyContainer">
       {
         news.map(function(singularNews) {
           return (
-            <section 
-            className="storyContainer"
+            <div 
              key={singularNews.uuid}>
               <Articles
                 title={singularNews.title}
                 img={singularNews.image_url}
                 date={new Date(singularNews.published_at).toDateString()}
+                source ={singularNews.source}
                 alt={singularNews.snippet}
                 url={singularNews.url}
                 content={singularNews.description}
               />
-            </section>
+            </div>
           )
         })
       }
+      </section>
       {/* END OF NEWS ARTICLES SECTION  */}
       </main>
       {/* END OF MAIN AND START OF FOOTER  */}

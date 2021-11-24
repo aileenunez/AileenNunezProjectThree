@@ -24,7 +24,7 @@ function Form({setSearch, setUserSelect}){
 
   //Returning What will Render on Page 
 return(
-  <>
+  <div className="formContainer">
     <form onSubmit={handleSubmit}>
         <label htmlFor="newsSearch">Search News:</label>
         <input 
@@ -36,8 +36,8 @@ return(
         onChange={handleChange} />
         <button>Find me this keyword</button>
       </form>
-      <button onClick={handleClearForm}>Back to Home Page</button>
-    </>
+      <button className="returnBtn" onClick={handleClearForm}>Back to Home Page</button>
+    </div>
 
 )
 
