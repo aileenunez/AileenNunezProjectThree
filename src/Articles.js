@@ -10,7 +10,7 @@ function Articles(props) {
         <p><span>Source:</span> {props.source}</p>
         <h2>{props.title}</h2>
         <p>{props.content}</p>
-        <button><a href={props.url}>Article Link</a></button>
+        <button><a target="blank" href={props.url}>Article Link</a></button>
       </div>
   )
 }

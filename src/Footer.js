@@ -1,12 +1,12 @@
 function Footer(){
     return(
         <footer>
-            <p>Created at Juno College Technology</p>
             <nav>
                 <ul>
-                    <li><a href="aileencodes.com">Portfolio</a></li>
-                    <li><a href="https://twitter.com/home?lang=en">Twitter</a></li>
-                    <li><a href="https://www.linkedin.com/in/aileenunez1016/">LinkedIn</a></li>
+                    <li><a target="blank" href="https://junocollege.com/">|Created at Juno College Technology</a></li>
+                    <li><a target="blank" href="https://aileencodes.com">|Portfolio</a></li>
+                    <li><a target="blank" href="https://twitter.com/aileencodes">|Twitter</a></li>
+                    <li><a target="blank" href="https://www.linkedin.com/in/aileenunez1016/">|LinkedIn</a></li>
                 </ul>
             </nav>
         </footer>

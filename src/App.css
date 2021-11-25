@@ -101,7 +101,7 @@ nav button:hover{
  }
 img{
   margin: 0 auto;
-  width: 80%; 
+  width: 90%; 
   height: auto;
   display: block;
   object-fit: cover;
@@ -132,7 +132,7 @@ form input{
   width:187px; 
   color: white; 
 }
-.formContainer button:hover{
+.formContainer button, .individualArticle button:hover{
   cursor: pointer;
   opacity: 0.8;
 }
@@ -141,7 +141,7 @@ form input{
 form i{
   color: #A71D02;
   position: relative; 
-  right: 182px; 
+  right: 187px; 
 }
 
 .individualArticle a {
@@ -157,8 +157,27 @@ form i{
   text-transform: uppercase;
   font-style: italic;
   font-weight: bold;
-  color: #0080FF;
+  color: #000080;
 }
+footer{
+  background-color: #000080;
+  margin-top: 16px;
+  padding: 0;
+  padding: 10px 10px
+}
+footer li{ 
+  text-transform: uppercase;
+  margin: 0; 
+  padding: 0;
+  display: inline-block;
+}
+footer a{
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0; 
+  padding: 0;
+} 
 
 /* MEDIA QUERIES  */
 @media (max-width:650px){
