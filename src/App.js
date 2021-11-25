@@ -74,13 +74,12 @@ function App() {
       {/* END OF HEADER SECTION  */}
       <main>
       {/* START OF NEWS ARTICLES SECTION  */}
-      <section className="storyContainer">
+      <section className="storyContainer wrapper">
       {
         news.map(function(singularNews) {
           return (
-            <div 
-             key={singularNews.uuid}>
               <Articles
+              key={singularNews.uuid}
                 title={singularNews.title}
                 img={singularNews.image_url}
                 date={new Date(singularNews.published_at).toDateString()}
@@ -88,7 +87,6 @@ function App() {
                 url={singularNews.url}
                 content={singularNews.description}
               />
-            </div>
           )
         })
       }

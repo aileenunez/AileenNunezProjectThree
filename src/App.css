@@ -48,6 +48,9 @@ h2{
   font-family: 'Abril Fatface', cursive;  
   color: #F13C20; 
 }
+h2::first-letter{
+  text-transform: uppercase;
+}
 header p{
   font-size: 1.25rem;
   text-align: center;
@@ -87,19 +90,23 @@ nav button:hover{
   display: flex;
   flex-wrap: wrap;
 }
-.individualArticle{
-  background-color:white; 
-  padding: 20px 40px;
-  margin-bottom: 20px;
-  width:calc(100% / 3); 
-  border: 2px solid #0080FF; 
-}
+ .individualArticle{
+  margin-left:20px; 
+  width: calc(50% - 40px);
+  margin-top: 20px;
+  padding: 40px 40px;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 1.1rem;
+ }
 img{
-  margin: 0 auto; 
+  margin: 0 auto;
+  width: 80%; 
+  height: auto;
   display: block;
-  width:80%; 
-  height: 200px;
-  border: 10px solid #F13C20; 
+  object-fit: cover;
+  border: 10px solid #A71D02; 
+  border-bottom: 30px solid #A71D02; 
 }
 
 
@@ -140,4 +147,22 @@ form i{
 .individualArticle a {
   text-decoration: none;
   color: white;
+}
+.individualArticle span{
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.date{
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+  color: #0080FF;
+}
+
+/* MEDIA QUERIES  */
+@media (max-width:650px){
+  .individualArticle{
+    width: 100%;
+  }
 }
