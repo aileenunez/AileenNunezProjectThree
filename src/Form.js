@@ -34,7 +34,7 @@ function Form({ setSearch, setUserSelect }) {
         <input
           value={formQuery}
           type="text"
-          placeholder="Keyword"
+          placeholder="Enter Keyword"
           id="newsSearch"
           name="newsSearch"
           onChange={handleChange}
