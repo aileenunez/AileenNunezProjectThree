@@ -40,10 +40,6 @@ function Form({ setSearch, setUserSelect }) {
           onChange={handleChange}
           required
         />
-        <i 
-        aria-label="Search Icon" 
-        className="fas fa-search"
-        ></i>
         <button>Search Keyword</button>
       </form>
       <button 
