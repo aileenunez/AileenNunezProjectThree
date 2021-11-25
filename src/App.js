@@ -47,25 +47,7 @@ function App() {
   return (
     <div className="App">
       {/* START OF HEADER SECTION  */}
-      <header>
-        <nav>
-          <ul>
-            {
-              categories.map(function (category) {
-                return (
-                  <li key={category}><button 
-                  value={category} 
-                  onClick={handleUserChoice}>{category}</button></li>
-                )
-              })
-            }
-          </ul>
-        </nav>
-        <h1>The Connect</h1>
-        <p>Daily News Website, search news by category through top navigation bar or keyword through search bar. </p>
-      </header>
-      {/* END OF HEADER SECTION  */}
-      <main>
+      <header className="wrapper">
       {/* START OF FORM SECTION  */}
       <Form 
       search={search} 
@@ -73,6 +55,24 @@ function App() {
       setUserSelect={setUserSelect}
       />
       {/* END OF FORM SECTION  */}
+      <h1>The Connect<span>.</span></h1>
+        <p>Daily News Website: go ahead and take a gander by category through navigation bar or by keyword by search bar.</p>
+      </header>
+      <nav>
+          <ul>
+            {
+              categories.map(function (category) {
+                return (
+                  <li key={category}><button 
+                  value={category} 
+                  onClick={handleUserChoice}>|{category}</button></li>
+                )
+              })
+            }
+          </ul>
+        </nav>
+      {/* END OF HEADER SECTION  */}
+      <main>
       {/* START OF NEWS ARTICLES SECTION  */}
       <section className="storyContainer">
       {
@@ -85,7 +85,6 @@ function App() {
                 img={singularNews.image_url}
                 date={new Date(singularNews.published_at).toDateString()}
                 source ={singularNews.source}
-                alt={singularNews.snippet}
                 url={singularNews.url}
                 content={singularNews.description}
               />

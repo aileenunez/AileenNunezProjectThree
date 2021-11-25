@@ -5,7 +5,7 @@ function Articles(props) {
 
   return (
       <div className='individualArticle'>
-        <img src={props.img} alt={props.alt} />
+        <img src={props.img} alt={props.content} />
         <p>{props.date}</p>
         <p>Source: {props.source}</p>
         <h2>{props.title}</h2>
