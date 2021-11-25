@@ -56,7 +56,7 @@ function App() {
       />
       {/* END OF FORM SECTION  */}
       <h1>The Connect<span>.</span></h1>
-        <p>Daily News Website: go ahead and take a gander by category through navigation bar or by keyword by search bar.</p>
+        <p>Daily News Website: go ahead and take a gander by category through navigation bar or by keyword through search bar.</p>
       </header>
       <nav>
           <ul>

@@ -49,7 +49,6 @@ h2{
   color: #F13C20; 
 }
 header p{
-  padding-bottom: 20px; 
   font-size: 1.25rem;
   text-align: center;
 }
@@ -70,26 +69,30 @@ nav li{
 nav button{
   font-family: 'Poppins', sans-serif; 
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: bolder;
   letter-spacing: 1.5px; 
   padding: 5px 5px; 
   width: 100%;
   border: none; 
   color: black; 
-  background-color: #0080FF;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  background-color: #F4EFE3;
+  border-top: 2px solid #0080FF;
+  border-bottom: 2px solid #0080FF;
 }
 nav button:hover{
-  color: #F13C20;
+  color: #000080; 
+  background-color: white;
 }
-
+.storyContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
 .individualArticle{
-  background-color:#ADD8E6;
+  background-color:white; 
   padding: 20px 40px;
   margin-bottom: 20px;
-  width:400px; 
-  height: auto;
+  width:calc(100% / 3); 
+  border: 2px solid #0080FF; 
 }
 img{
   margin: 0 auto; 
@@ -97,11 +100,6 @@ img{
   width:80%; 
   height: 200px;
   border: 10px solid #F13C20; 
-}
-.storyContainer{
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #F4EFE3 
 }
 
 
@@ -116,7 +114,7 @@ form input{
   color: #A71D02;
   border:2px solid #A71D02; 
 }
-.formContainer button{
+.formContainer button, .individualArticle button{
   display: block;
   background-color: #A71D02;
   border: none;
@@ -137,4 +135,9 @@ form i{
   color: #A71D02;
   position: relative; 
   right: 182px; 
+}
+
+.individualArticle a {
+  text-decoration: none;
+  color: white;
 }
