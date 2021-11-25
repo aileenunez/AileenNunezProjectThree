@@ -1,4 +1,4 @@
-
+//Available news categories specificied in API docs; stored in array to use map function and render on page 
 const categories = [
     'general', 
     'science',
@@ -11,5 +11,4 @@ const categories = [
     'food', 
     'travel'
 ]
-
 export default categories
